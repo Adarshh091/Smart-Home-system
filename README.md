@@ -1,10 +1,4 @@
-Excellent 👍 — Here’s a complete GitHub project content for
-📘 “IoT-Based Home Automation using Smartphone and ESP32”
 
-You can copy this structure and upload it directly to your GitHub repository.
-
-
----
 
 🏠 IoT-Based Home Automation using Smartphone and ESP32
 
