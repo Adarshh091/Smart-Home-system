@@ -1,10 +1,3 @@
-Excellent 👍 — Here’s a complete GitHub project content for
-📘 “IoT-Based Home Automation using Smartphone and ESP32”
-
-You can copy this structure and upload it directly to your GitHub repository.
-
-
----
 
 🏠 IoT-Based Home Automation using Smartphone and ESP32
 
@@ -14,7 +7,7 @@ This project demonstrates how to control home appliances using a smartphone and 
 It allows you to switch ON/OFF appliances like fans, lights, or other devices using the Blynk IoT App or a web interface.
 
 
----
+
 
 🎯 Objectives
 
@@ -26,7 +19,7 @@ Implement automation using ESP32 and relay modules.
 
 
 
----
+
 
 🧩 Components Used
 
@@ -40,8 +33,6 @@ Smartphone	To control appliances
 Power Source	5V USB or adapter
 
 
-
----
 
 ⚙️ Working Principle
 
@@ -59,7 +50,7 @@ Power Source	5V USB or adapter
 
 
 
----
+
 
 🔌 Circuit Diagram
 
@@ -71,8 +62,9 @@ D23	IN1	Control Signal
 5V	VCC	Power
 GND	GND	Ground
 
+![relay-esp32-wiring](https://github.com/user-attachments/assets/94da02e3-8ce7-46fa-9de7-079f5d4a247d)
 
-⚠️ Safety Note: Handle AC connections with care or use a low-voltage demonstration (e.g., LED bulb).
+
 
 
 ---
@@ -112,66 +104,7 @@ void loop() {
 }
 
 
----
 
-🌐 Alternative Version: ESP32 Web Server (No App Needed)
-
-Filename: home_automation_webserver.ino
-
-#include <WiFi.h>
-
-const char* ssid = "Your_WiFi_Name";
-const char* password = "Your_WiFi_Password";
-
-WiFiServer server(80);
-int relayPin = 23;
-String header;
-
-void setup() {
-  Serial.begin(115200);
-  pinMode(relayPin, OUTPUT);
-  digitalWrite(relayPin, LOW);
-
-  Serial.println("Connecting to WiFi...");
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("\nWiFi connected!");
-  Serial.println("IP Address: ");
-  Serial.println(WiFi.localIP());
-  server.begin();
-}
-
-void loop() {
-  WiFiClient client = server.available();
-  if (client) {
-    String request = client.readStringUntil('\r');
-    client.flush();
-
-    if (request.indexOf("/ON") != -1) {
-      digitalWrite(relayPin, HIGH);
-    } 
-    else if (request.indexOf("/OFF") != -1) {
-      digitalWrite(relayPin, LOW);
-    }
-
-    // Simple HTML UI
-    String html = "<!DOCTYPE html><html><body>";
-    html += "<h2>ESP32 Home Automation</h2>";
-    html += "<p><a href=\"/ON\"><button>Turn ON</button></a></p>";
-    html += "<p><a href=\"/OFF\"><button>Turn OFF</button></a></p>";
-    html += "</body></html>";
-
-    client.print("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n" + html);
-    client.stop();
-  }
-}
-
-
----
 
 📱 Blynk Setup Steps
 
@@ -216,9 +149,3 @@ Add data logging and cloud monitoring.
 
 
 
----
-
-🧾 License
-
-This project is open-source under the MIT License.
-Feel free to use and modify for learning and research purposes
